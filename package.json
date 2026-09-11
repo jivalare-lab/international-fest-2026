@@ -10,5 +10,8 @@
   "devDependencies": {
     "jsdom": "^30.0.1"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
 }
