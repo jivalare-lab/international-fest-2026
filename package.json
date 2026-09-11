@@ -4,7 +4,9 @@
   "description": "Loyola's International Fest 2026 \u2014 registered tables",
   "scripts": {
     "verificar": "node verificar.js && node verificar-render.js",
-    "test": "npm run verificar"
+    "test": "npm run verificar",
+    "sync": "node scripts/sync.js",
+    "sync:prueba": "node scripts/sync.js --estudiantes scripts/fixtures/estudiantes.csv --programas scripts/fixtures/programas.csv --dry"
   },
   "type": "commonjs",
   "devDependencies": {

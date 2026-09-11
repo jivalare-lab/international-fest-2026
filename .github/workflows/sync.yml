@@ -1,0 +1,76 @@
+name: sincronizar con el formulario
+
+# Lee el formulario, regenera los datos, corre las puertas y ABRE UN PULL
+# REQUEST. Nunca publica solo: el ultimo paso lo aprueba una persona.
+# Esa es la diferencia entre nivel 2 y nivel 5 en este repo.
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'      # cada 3 horas
+  workflow_dispatch:            # o cuando le des al boton
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sincronizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Comprobar que las fuentes estan configuradas
+        env:
+          EST: ${{ secrets.FORM_CSV_ESTUDIANTES }}
+        run: |
+          if [ -z "$EST" ]; then
+            echo "::error::Falta el secreto FORM_CSV_ESTUDIANTES."
+            echo "Settings > Secrets and variables > Actions > New repository secret"
+            exit 1
+          fi
+
+      - name: Leer el formulario y regenerar los datos
+        env:
+          FORM_CSV_ESTUDIANTES: ${{ secrets.FORM_CSV_ESTUDIANTES }}
+          FORM_CSV_PROGRAMAS:   ${{ secrets.FORM_CSV_PROGRAMAS }}
+        run: node scripts/sync.js
+
+      # Si los datos nuevos no pasan, el PR no se abre. Un pais sin mapear o un
+      # host con basura detiene el proceso aqui y llega el aviso por correo.
+      - name: Puerta de verificacion
+        run: npm run verificar
+
+      - name: Abrir Pull Request si algo cambio
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/formulario
+          delete-branch: true
+          commit-message: |
+            Sincronizar mesas con el formulario
+
+            Generado por scripts/sync.js. Las dos puertas pasaron antes de
+            abrir este PR.
+          title: 'Mesas nuevas o cambiadas en el formulario'
+          body: |
+            Cambios detectados en el formulario de inscripcion.
+
+            Las dos puertas (`npm run verificar`) **ya pasaron en verde** sobre
+            estos datos: si un pais no se pudiera ubicar en un continente, o un
+            nombre de host viniera con basura, este PR no existiria.
+
+            **Revisa el diff de `data/tables.js` antes de mezclar.** Fijate en:
+
+            - nombres de hosts que no parezcan personas
+            - paises que hayan caido en el continente equivocado
+            - correos con erratas
+            - si hay que agregar algo a `data/overrides.json`
+
+            Al mezclar, GitHub Pages publica solo.
+          labels: automatico

@@ -1,0 +1,55 @@
+{
+  "_comentario": [
+    "Correcciones a mano que sobreviven a cada sincronizacion con el formulario.",
+    "scripts/sync.js las aplica al final, asi que nada del formulario las pisa.",
+    "'nombres' arregla como se escribio el pais en el form -> como se muestra.",
+    "'byId' arregla campos de una mesa concreta. 'notesAppend' agrega sin borrar."
+  ],
+
+  "nombres": {
+    "Deutschland (Germany)": "Germany",
+    "Costa rica": "Costa Rica",
+    "Puerto rico": "Puerto Rico",
+    "Summer in Prague/Vienna/Budapest": "Summer in Prague / Vienna / Budapest"
+  },
+
+  "byId": {
+    "venezuela": {
+      "emails": ["ppineiro@my.loyno.edu"],
+      "notesAppend": "The preferred e-mail on the form read ppineirl@, one letter off from the Loyola account. Using ppineiro@my.loyno.edu; worth confirming."
+    },
+    "germany": {
+      "notesAppend": "Signed up as “Deutschland (Germany)”."
+    },
+    "turkiye": {
+      "notesAppend": "Transcontinental, grouped under Europe for the fest."
+    },
+    "latvia": {
+      "notesAppend": "Solo host, a good table to pair with a neighbour."
+    },
+    "nepal": {
+      "phone": "(504) 505-3896",
+      "phoneHref": "+15045053896",
+      "notesAppend": "Phone came in as “+(504) 5053896”; read as a New Orleans number. Worth confirming."
+    },
+    "peru": {
+      "food": "Arroz chaufa and chicha morada (juice)"
+    },
+    "romania": {
+      "food": "Mămăligă"
+    },
+    "austria": {
+      "activities": "Austria flag and an alcohol-free Austrian beer stein holding contest"
+    },
+    "south-africa": {
+      "food": "Undecided: maybe milk tart or pickled fish"
+    },
+    "summer-in-prague-vienna-budapest": {
+      "iso": "cz",
+      "notesAppend": "Loyola study abroad program."
+    },
+    "iceland": {
+      "notesAppend": "Loyola study abroad program."
+    }
+  }
+}

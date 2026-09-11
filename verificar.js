@@ -138,8 +138,40 @@ for (const t of TABLES.filter(x => x.neighbour)) {
 }
 if (vecErr === 0) ok('las peticiones de mesas contiguas apuntan a mesas que existen');
 
-/* ---------- 9. La pagina no se indexa ---------- */
-console.log('\n\x1b[1m9. Indexacion\x1b[0m');
+/* ---------- 9. Calidad de lo que genera el sincronizador ---------- */
+console.log('\n\x1b[1m9. Calidad de los datos generados\x1b[0m');
+// Estas fallas no rompen nada: salen impresas en la tarjeta como si fueran
+// buenas. Ya pasaron las tres la primera vez que corrio sync.js.
+const RELLENOS = new Set(['tbd','tba','none','n/a','na','me','only me','myself','unknown','pending']);
+let basura = 0;
+for (const t of TABLES) {
+  for (const h of t.hosts) {
+    if (/^\d/.test(h))                      { mal(`[${t.id}] host que empieza con numero: "${h}"`); basura++; }
+    if (RELLENOS.has(h.toLowerCase()))       { mal(`[${t.id}] host de relleno: "${h}"`); basura++; }
+    if (/[\u2014\u2013]/.test(h))            { mal(`[${t.id}] host con guion largo: "${h}"`); basura++; }
+    if (h.toLowerCase() === t.name.toLowerCase()) { mal(`[${t.id}] el nombre del pais esta puesto como si fuera una persona`); basura++; }
+    const abre = (h.match(/\(/g) || []).length, cierra = (h.match(/\)/g) || []).length;
+    if (abre !== cierra)                     { mal(`[${t.id}] host con parentesis sin cerrar: "${h}"`); basura++; }
+  }
+}
+if (basura === 0) ok(`los ${TABLES.reduce((n,t)=>n+t.hosts.length,0)} nombres de hosts estan limpios`);
+
+// Un id mal escrito en overrides.json no da error: la correccion simplemente
+// no se aplica y nadie se entera. Ha de gritar.
+const ovrPath = path.join(root, 'data/overrides.json');
+if (fs.existsSync(ovrPath)) {
+  const ovr = JSON.parse(fs.readFileSync(ovrPath, 'utf8'));
+  const idsReales = new Set(TABLES.map(t => t.id));
+  const huerfanos = Object.keys(ovr.byId || {}).filter(id => !idsReales.has(id));
+  test(huerfanos.length === 0,
+    `las ${Object.keys(ovr.byId || {}).length} correcciones de overrides.json apuntan a mesas que existen`,
+    `overrides.json corrige mesas que no existen: ${huerfanos.join(', ')} — esas correcciones no se aplican y nadie lo nota`);
+} else {
+  avisa('no existe data/overrides.json');
+}
+
+/* ---------- 10. La pagina no se indexa ---------- */
+console.log('\n\x1b[1m10. Indexacion\x1b[0m');
 // Se comparte por link, no se publica al buscador. Si esta linea desaparece,
 // 26 telefonos entran en Google sin que nadie se entere.
 test(/name=["']robots["'][^>]*noindex/i.test(html),
@@ -150,8 +182,8 @@ test(fs.existsSync(path.join(root, 'robots.txt')) &&
   'robots.txt bloquea a los rastreadores',
   'robots.txt no existe o no bloquea');
 
-/* ---------- 10. Aviso de datos personales ---------- */
-console.log('\n\x1b[1m10. Datos personales publicados\x1b[0m');
+/* ---------- 11. Aviso de datos personales ---------- */
+console.log('\n\x1b[1m11. Datos personales publicados\x1b[0m');
 const conTel = TABLES.filter(t => t.phone).length;
 const correos= TABLES.flatMap(t => t.emails).length;
 avisa(`esta pagina publica ${correos} correos y ${conTel} telefonos de terceros en un sitio indexable por Google.`);
