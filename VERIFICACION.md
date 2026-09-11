@@ -1,93 +1,142 @@
-# Verificación
+---
+sistema: International Fest 2026 (mesas de ISA)
+dominio: codigo
+nivel_requerido: 5
+nivel_actual: 2
+verificar: npm run verificar
+revisado: 2026-09-11
+fuente: ~/.claude/verificacion/PROTOCOLO.md
+---
 
-**Sistema:** International Fest 2026 — mesas registradas (sitio público de ISA)
-**Dominio:** código
-**Clasificado:** 2026-09-11
+# Verificación de: International Fest 2026 (mesas de ISA)
 
-## Los dos números
+> Archivo generado. No lo edites a mano: cambia `~/.claude/verificacion/registro.tsv`
+> y corre `bash ~/.claude/verificacion/propagar.sh`.
 
-- **`nivel_requerido`: 5**
-- **`nivel_actual`: 2**
+## Contrato de este sistema
 
-### Por qué 5
+| | |
+|---|---|
+| Nivel requerido | **5** |
+| Nivel actual | **2** |
+| Comando de verificación | `npm run verificar` |
+| Última revisión | 2026-09-11 |
 
-La primera intención fue 3 por la regla «es público y compartido, y un error se
-ve pero se arregla». No se sostiene. La página publica **31 correos y 26
-teléfonos personales de 71 estudiantes y profesores** en un sitio indexable por
-Google. Eso activa la regla 1 de la prueba de consecuencia: *un error toca a un
-tercero*. Un dato equivocado aquí no es un error propio, es el teléfono de otra
-persona mal puesto en internet, y borrarlo del sitio no lo borra del historial
-de git ni del caché de Google.
+**Brecha abierta (2 de 5).** Clasificado el 2026-09-11. Requerido 5, no 3: la pagina publica 31 correos y 26 telefonos personales de 71 estudiantes y profesores, asi que un error toca a un tercero (regla 1). Decision explicita de Isaac tras plantearle la alternativa sin telefonos; queda escrita en VERIFICACION.md. Mitigacion puesta: meta robots noindex y robots.txt, y la puerta comprueba que sigan ahi. Tiene git y las dos puertas pasan en verde en local (17 estaticas + 15 de render con jsdom), asi que su nivel real es 2. CI YA EN VERDE (run 34622135577, Node 22): sube a 3 en cuanto Isaac lo confirme. Para el 4 le falta vista previa antes de integrar. Para el 5 le faltan rastro de auditoria de que dato se publico y cuando, procedimiento probado de retirada a peticion de un host (incluye reescribir el historial de git) y alerta si la pagina se cae. Clasificacion inicial del agente, pendiente de que Isaac la confirme.
 
-Isaac tomó esta decisión de forma explícita el 2026-09-11, después de que el
-agente planteara la alternativa de publicar sin teléfonos. Queda escrita aquí
-para que ningún agente futuro la trate como un descuido.
+Mientras la brecha siga abierta, todo agente trabaja al **nivel 2**:
+diff completo revisado por Isaac antes de integrar, sin excepciones, por
+rápido que pueda escribir. La puerta que manda es la que existe.
 
-### Por qué el actual es 2
+Este sistema es de riesgo alto. **Cerrar la brecha va antes que cualquier
+función nueva.** No construyas encima de lo que no puedes verificar.
 
-Tiene git desde el primer commit y `node verificar.js` pasa en verde en local.
-Eso es exactamente nivel 2. Se trabaja como **nivel 2**: Isaac revisa el diff
-completo antes de integrar.
+## Protocolo de verificación
 
-## Verificar con
+Fuente canónica: `~/.claude/verificacion/PROTOCOLO.md`.
+Por qué el sistema es así, qué se descartó y qué queda por hacer:
+`~/.claude/verificacion/BITACORA.md`. Cómo operarlo y extenderlo: `README.md`.
+Este bloque se propaga solo. No lo edites aquí, edita la fuente y corre
+`bash ~/.claude/verificacion/propagar.sh`.
 
-```
-node verificar.js && node verificar-render.js
-```
+### Para qué existe
 
-## Qué prueba la puerta
+Un agente de IA puede escribir código o notas más rápido de lo que Isaac puede
+leerlos. El único límite honesto a esa velocidad es cuánta verificación
+automática existe. Este protocolo fija ese límite por escrito, sistema por
+sistema, para que ningún agente vaya más rápido de lo que su red de seguridad
+aguanta, y para que ningún sistema cargue con más ceremonia de la que su riesgo
+justifica.
 
-Las reglas que, si fallan, devuelven una página en blanco o un dato falso en vez
-de un error visible:
+### Los dos números
 
-1. Los cinco archivos del sitio existen.
-2. `data/tables.js` evalúa sin error.
-3. Por cada mesa: id único, **país sin repetir** (dos mesas de South Korea ya
-   pasó una vez), región existente, al menos un correo bien formado, código ISO
-   válido para la bandera, emoji de respaldo, teléfono en formato E.164.
-4. **El puente HTML ↔ JS**: los 12 ids que `app.js` busca con `getElementById`
-   existen en `index.html`. Si uno se renombra, la página carga en blanco y el
-   navegador no da ningún error.
-5. Los enlaces locales del HTML resuelven.
-6. Las seis regiones tienen color propio, válido y distinto entre sí.
-7. **Los números del pie contra los datos reales.** El pie dice «28 tables from
-   26 countries and 2 programs» a mano; si los datos cambian y el pie no, la
-   página miente sin dar error.
-8. Las peticiones de mesas contiguas apuntan a mesas que existen.
-9. Avisa, cada vez que corre, de cuántos datos personales se están publicando.
+Todo sistema declara dos:
 
-## Brecha abierta, de 2 a 5
+- **`nivel_requerido`**: el que exige su consecuencia. Lo fija el daño posible,
+  no la ambición ni el cariño que se le tenga al proyecto.
+- **`nivel_actual`**: el que su verificación real sostiene hoy. Se mide, no se
+  desea. Si la prueba no existe o no corre, no cuenta.
 
-En orden:
+La distancia entre los dos es la cola de trabajo. Nada más.
 
-- **A 3:** CI corriendo la puerta en cada push. Ya está escrito en
-  `.github/workflows/verificar.yml`; sube a 3 cuando Isaac lo vea en verde.
-- **A 4:** comprobación de que el HTML renderizado dibuja las 28 tarjetas (hoy
-  la puerta valida los datos y el puente, no el resultado en pantalla), y vista
-  previa antes de integrar.
-- **A 5:** rastro de auditoría de qué dato personal se publicó y cuándo, un
-  procedimiento probado de retirada a petición de un host (incluye reescribir el
-  historial de git), y aviso a Isaac si la página se cae.
+### Prueba de consecuencia, para fijar `nivel_requerido`
 
-**Mientras la brecha siga abierta, se trabaja como nivel 2.**
+Responde en orden y quédate con el primer sí.
 
-## Origen de los datos
+1. ¿Corre sin nadie mirando, o un error toca a un tercero, dinero, salud, un
+   documento legal o datos de un cliente? → **5**
+2. ¿Alguien depende del resultado y un error podría pasar inadvertido? → **4**
+3. ¿Es público o compartido, y un error se ve pero se arregla? → **3**
+4. ¿Es trabajo interno y un error solo cuesta tu propio tiempo? → **2**
+5. ¿Es desechable? → **1**
 
-- `scripts/fuente.xlsx` — «International Festival Sign Up Fall 2026 (Responses)»,
-  descargado el 2026-09-11. 27 inscripciones.
-- Las dos mesas de programas (Prague/Vienna/Budapest e Iceland) las pasó Isaac a
-  mano el 2026-09-11 desde un segundo formulario.
-- South Korea son dos inscripciones fusionadas en una mesa.
+La regla 1 no admite matices. Algo que se ejecuta solo es nivel 5 aunque sea
+pequeño, aunque sea personal, aunque «solo mande un mensaje».
 
-## Hallazgos pendientes de confirmar con ISA
+### Los niveles
 
-- **Venezuela**: el correo preferido del formulario dice `ppineirl@my.loyno.edu`,
-  una letra distinto de la cuenta Loyola `ppineiro@my.loyno.edu`. El sitio usa la
-  cuenta Loyola. Confirmar con Pablo Piñeiro.
-- **Ecuador**: la inscripción se marcó «submitting on behalf of someone else who
-  will be present».
-- **Nepal**: el teléfono llegó como `+(504) 5053896`. Se interpretó como número
-  de New Orleans, `+1 504 505 3896`. Confirmar.
-- **Shivika Sharma** aparece a la vez en la mesa de India y como host de Nepal.
+**Nivel 1, borrador.** El agente propone, Isaac lee cada línea.
+Puerta: ninguna automática, pero el cambio se ejecuta al menos una vez.
 
-Protocolo completo: `~/.claude/verificacion/PROTOCOLO.md`
+**Nivel 2, ejecutor.** El agente escribe, Isaac revisa el diff completo antes de
+integrar.
+Puerta: control de versiones + el cambio corre + Isaac aprueba el diff.
+Piso duro: sin git no se pasa de nivel 1. Nunca.
+
+**Nivel 3, colaborador verificado.** Isaac revisa el resumen, no cada línea.
+Puerta en código: typecheck, build y lint corriendo en CI en cada push. Trabajo
+en rama, no directo a `main`.
+Puerta en vault: los enlaces resuelven, todo campo consultado por Dataview
+existe con ese nombre exacto, y no se creó una segunda fuente de verdad.
+
+**Nivel 4, operador.** El agente trabaja solo en una rama y la puerta decide si
+entra.
+Puerta: todo lo de nivel 3, más pruebas de las reglas críticas (las que si
+fallan devuelven un dato falso en vez de un error), más una comprobación de
+arquitectura o de esquema, más una vista previa antes de integrar.
+Regla añadida: ninguna ruta de error puede quedarse callada.
+
+**Nivel 5, autónomo con garantía.** El agente publica sin que Isaac mire.
+Puerta: todo lo de nivel 4, más prueba contra la dependencia real y no simulada,
+más idempotencia verificada corriendo el proceso dos veces, más una alerta que
+llega a Isaac cuando falla, más rastro de auditoría, más una reversión probada.
+
+### Regla de eficiencia, en las dos direcciones
+
+- **No inviertas por encima del requerido.** Montar CI, pruebas y alertas en un
+  sistema de nivel 2 es gastar el recurso escaso en el lugar equivocado.
+- **No operes por encima del actual.** Si `nivel_actual` es 2, el agente trabaja
+  como nivel 2 aunque el proyecto exija 5. La velocidad la fija la puerta que
+  existe, no la que debería existir. Escribir a ritmo de nivel 4 en un repo con
+  puertas de nivel 1 es la forma más cara de trabajar que hay.
+- **Donde `nivel_requerido` es 4 o 5, cerrar la brecha va antes que cualquier
+  función nueva.** No se construye encima de algo que no se puede verificar.
+
+### Puerta de salida, obligatoria en toda tarea
+
+1. **Declara.** Lee el `VERIFICACION.md` del sistema antes de tocar nada. Si no
+   existe, clasifícalo con la prueba de consecuencia y créalo primero.
+2. **Ejecuta.** Corre el comando de verificación que el nivel actual exige y
+   pega su salida real en el informe.
+3. **No afirmes sin correr.** «Verificado», «funciona» y «listo» solo se
+   escriben con la salida del comando delante. El handoff de otro agente no es
+   evidencia: se comprueba.
+4. **No falles en silencio.** Lo que no se pudo verificar se dice con nombre
+   propio, en la respuesta, no en un log.
+5. **No subas de nivel por tu cuenta.** Cerrar una brecha cambia el contrato del
+   sistema y lo aprueba Isaac.
+6. **Registra.** `nivel_actual` se actualiza solo cuando la puerta nueva ya
+   corrió en verde una vez.
+
+### Prohibiciones, aprendidas de esta máquina
+
+- **`.bak` no es control de versiones.** Un `archivo.py.bak-antes-de-x` es la
+  señal de que falta `git init`.
+- **Un log que nadie lee no es una alerta.** Si el único rastro de un fallo está
+  en un `.err.log`, el sistema falla en silencio por definición.
+- **Un dato simulado no se presenta nunca como medido.** Si el valor es
+  estimado, la interfaz lo dice.
+- **Un Dataview vacío se investiga, no se asume correcto.** Casi siempre es un
+  campo mal escrito ocultando datos que sí existen.
+- **Una función sin prueba puede llevar semanas sin hacer nada** y nadie se
+  entera. Ya pasó, con seis a la vez.
