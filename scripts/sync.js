@@ -14,6 +14,7 @@
 const fs = require('fs');
 const path = require('path');
 const { busca, isoAEmoji } = require('./paises.js');
+const { leeHoja } = require('./google.js');
 
 const root = path.join(__dirname, '..');
 const ARCHIVO_DATOS = path.join(root, 'data/tables.js');
@@ -51,20 +52,48 @@ function parseCSV(texto) {
   return filas.filter(f => f.some(x => String(x).trim() !== ''));
 }
 
+const CREDS = process.env.GOOGLE_CREDENCIALES || '';
+const esEnlaceDeSheets = (f) => /docs\.google\.com\/spreadsheets\/d\//.test(f);
+
+/* Devuelve las filas ya partidas, venga de donde venga la fuente.
+   Tres caminos, en este orden:
+     1. Enlace normal de Google Sheets + credencial de cuenta de servicio.
+        La hoja sigue PRIVADA. Es el camino recomendado.
+     2. Cualquier URL que devuelva CSV (una hoja publicada a la web).
+     3. Un archivo local, que es como se prueba sin tocar Google. */
 async function leeFuente(f, etiqueta) {
   if (!f) return null;
+
+  if (esEnlaceDeSheets(f)) {
+    if (!CREDS) {
+      throw new Error(
+        `${etiqueta}: es un enlace de Google Sheets pero falta la credencial.\n` +
+        '  Exporta GOOGLE_CREDENCIALES con el JSON de la cuenta de servicio,\n' +
+        '  o en GitHub creala como secreto. Lee la seccion "Keeping it in sync" del README.'
+      );
+    }
+    const { pestana, filas } = await leeHoja(f, CREDS);
+    console.log(`  ${etiqueta}: leida la pestaña "${pestana}" (hoja privada, via cuenta de servicio)`);
+    return filas;
+  }
+
   if (/^https?:/.test(f)) {
     const r = await fetch(f, { redirect: 'follow' });
     if (!r.ok) throw new Error(`${etiqueta}: la URL respondio ${r.status} ${r.statusText}`);
     const t = await r.text();
     if (/<html/i.test(t.slice(0, 400))) {
-      throw new Error(`${etiqueta}: la URL devolvio HTML, no CSV. Revisa que la hoja este publicada como CSV.`);
+      throw new Error(
+        `${etiqueta}: la URL devolvio HTML, no CSV.\n` +
+        '  La hoja no es legible sin iniciar sesion. Usa el enlace normal de la hoja\n' +
+        '  con una cuenta de servicio, o publicala como CSV.'
+      );
     }
-    return t;
+    return parseCSV(t);
   }
+
   const p = path.isAbsolute(f) ? f : path.join(root, f);
   if (!fs.existsSync(p)) throw new Error(`${etiqueta}: no existe el archivo ${p}`);
-  return fs.readFileSync(p, 'utf8');
+  return parseCSV(fs.readFileSync(p, 'utf8'));
 }
 
 /* Busca la columna cuyo encabezado contenga todas las palabras dadas.
@@ -185,8 +214,7 @@ function ubica(textoPais, contexto) {
   return r;
 }
 
-function leeEstudiantes(csv) {
-  const filas = parseCSV(csv);
+function leeEstudiantes(filas) {
   const h = filas[0];
   const c = {
     correo:    col(h, 'email address'),
@@ -233,8 +261,7 @@ function leeEstudiantes(csv) {
   }).filter(Boolean);
 }
 
-function leeProgramas(csv) {
-  const filas = parseCSV(csv);
+function leeProgramas(filas) {
   const h = filas[0];
   const c = {
     nombre:  col(h, 'program you plan to represent'),
@@ -411,13 +438,13 @@ function actualizaPie(html, mesas) {
 
   console.log('\n\x1b[1mSincronizando con el formulario\x1b[0m\n');
 
-  const [csvEst, csvProg] = await Promise.all([
+  const [filasEst, filasProg] = await Promise.all([
     leeFuente(FUENTE_EST, 'estudiantes'),
     leeFuente(FUENTE_PROG, 'programas')
   ]);
 
-  const est  = leeEstudiantes(csvEst);
-  const prog = csvProg ? leeProgramas(csvProg) : [];
+  const est  = leeEstudiantes(filasEst);
+  const prog = filasProg ? leeProgramas(filasProg) : [];
   console.log(`  leidas ${est.length} inscripciones de estudiantes y ${prog.length} de programas`);
 
   // Regla 1: nada se pierde en silencio.

@@ -2,12 +2,16 @@ name: sincronizar con el formulario
 
 # Lee el formulario, regenera los datos, corre las puertas y ABRE UN PULL
 # REQUEST. Nunca publica solo: el ultimo paso lo aprueba una persona.
-# Esa es la diferencia entre nivel 2 y nivel 5 en este repo.
+#
+# Dos formas de leer la hoja, en orden de preferencia:
+#   1. Variable HOJA_ESTUDIANTES (el enlace normal) + secreto GOOGLE_CREDENCIALES.
+#      La hoja sigue PRIVADA. Es la recomendada.
+#   2. Secreto FORM_CSV_ESTUDIANTES (una hoja publicada a la web como CSV).
 
 on:
   schedule:
     - cron: '0 */3 * * *'      # cada 3 horas
-  workflow_dispatch:            # o cuando le des al boton
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -26,21 +30,39 @@ jobs:
 
       - run: npm ci
 
-      - name: Comprobar que las fuentes estan configuradas
+      - name: Decidir de donde se lee
+        id: fuente
         env:
-          EST: ${{ secrets.FORM_CSV_ESTUDIANTES }}
+          HOJA_EST: ${{ vars.HOJA_ESTUDIANTES }}
+          HOJA_PROG: ${{ vars.HOJA_PROGRAMAS }}
+          CSV_EST: ${{ secrets.FORM_CSV_ESTUDIANTES }}
+          CSV_PROG: ${{ secrets.FORM_CSV_PROGRAMAS }}
+          CREDS: ${{ secrets.GOOGLE_CREDENCIALES }}
         run: |
-          if [ -z "$EST" ]; then
-            echo "::error::Falta el secreto FORM_CSV_ESTUDIANTES."
-            echo "Settings > Secrets and variables > Actions > New repository secret"
+          if [ -n "$HOJA_EST" ]; then
+            if [ -z "$CREDS" ]; then
+              echo "::error::Hay variable HOJA_ESTUDIANTES pero falta el secreto GOOGLE_CREDENCIALES."
+              exit 1
+            fi
+            echo "est=$HOJA_EST"  >> "$GITHUB_OUTPUT"
+            echo "prog=$HOJA_PROG" >> "$GITHUB_OUTPUT"
+            echo "Leyendo la hoja privada con la cuenta de servicio."
+          elif [ -n "$CSV_EST" ]; then
+            echo "est=$CSV_EST"  >> "$GITHUB_OUTPUT"
+            echo "prog=$CSV_PROG" >> "$GITHUB_OUTPUT"
+            echo "Leyendo el CSV publicado a la web."
+          else
+            echo "::error::No hay de donde leer. Configura la variable HOJA_ESTUDIANTES mas el secreto GOOGLE_CREDENCIALES (recomendado), o el secreto FORM_CSV_ESTUDIANTES."
             exit 1
           fi
 
       - name: Leer el formulario y regenerar los datos
         env:
-          FORM_CSV_ESTUDIANTES: ${{ secrets.FORM_CSV_ESTUDIANTES }}
-          FORM_CSV_PROGRAMAS:   ${{ secrets.FORM_CSV_PROGRAMAS }}
-        run: node scripts/sync.js
+          GOOGLE_CREDENCIALES: ${{ secrets.GOOGLE_CREDENCIALES }}
+        run: |
+          node scripts/sync.js \
+            --estudiantes "${{ steps.fuente.outputs.est }}" \
+            ${{ steps.fuente.outputs.prog && format('--programas "{0}"', steps.fuente.outputs.prog) || '' }}
 
       # Si los datos nuevos no pasan, el PR no se abre. Un pais sin mapear o un
       # host con basura detiene el proceso aqui y llega el aviso por correo.

@@ -42,19 +42,43 @@ You read the diff and merge. Nothing reaches the public page without a human.
 
 ### One-time setup
 
-1. Open the Google Sheet with the form responses.
-2. **File → Share → Publish to web**. Pick the responses sheet, choose
-   **Comma-separated values (.csv)**, publish, and copy the URL.
-3. Do the same for the programs sheet, if it is separate.
-4. In this repo: **Settings → Secrets and variables → Actions → New repository
-   secret**, and add:
-   - `FORM_CSV_ESTUDIANTES` — the students CSV URL
-   - `FORM_CSV_PROGRAMAS` — the programs CSV URL (optional)
-5. **Actions → sincronizar con el formulario → Run workflow** to test it.
+The responses sheet is private and must stay that way: it holds phone numbers.
+So the robot reads it as a **service account**, a robot Google user you share
+the sheet with. Nothing is published to the web.
 
-Publishing the sheet to the web makes it readable by anyone holding that URL.
-The URL lives in a GitHub secret, but keep that in mind: it is the same data as
-the site, plus the timestamps.
+1. Go to https://console.cloud.google.com, create a project (any name).
+2. **APIs & Services → Library**, search **Google Sheets API**, click Enable.
+3. **APIs & Services → Credentials → Create credentials → Service account**.
+   Name it something like `fest-roster-reader` and create it.
+4. Open it, go to **Keys → Add key → Create new key → JSON**. A file downloads.
+   Inside it there is a `client_email` that looks like
+   `fest-roster-reader@your-project.iam.gserviceaccount.com`.
+5. Open the responses sheet, click **Share**, paste that address, give it
+   **Viewer**, and uncheck notify. The sheet stays private; only that robot and
+   the people you already shared it with can read it.
+6. In this repo, **Settings → Secrets and variables → Actions**:
+   - tab **Secrets** → New repository secret → name `GOOGLE_CREDENCIALES`,
+     value: paste the **whole JSON file**, exactly as downloaded. Do not
+     reformat it and do not paste only the key.
+   - tab **Variables** → New repository variable → name `HOJA_ESTUDIANTES`,
+     value: the normal sheet link from your browser, the one with `/edit?gid=`.
+   - add `HOJA_PROGRAMAS` the same way if the programs form is a separate sheet
+     or a separate tab.
+7. **Actions → sincronizar con el formulario → Run workflow** to test it.
+
+The sheet link is a repo variable and not a secret on purpose: without the
+credential the link grants nothing.
+
+If you point it at the wrong tab, the run fails and the error lists every tab
+in the file with its `gid`, so you can copy the right one.
+
+### The other way: publish the sheet as CSV
+
+Faster, but it makes the responses readable by anyone holding the published URL,
+which works against this being an internal roster. If you still want it:
+**File → Share → Publish to web → the responses sheet → CSV**, then store the
+URL as the secret `FORM_CSV_ESTUDIANTES` (and `FORM_CSV_PROGRAMAS`). The
+workflow uses it only when `HOJA_ESTUDIANTES` is not set.
 
 ### Running it by hand
 
@@ -100,6 +124,7 @@ assets/app.js           rendering, search, filters, mail buttons
 data/tables.js          the roster — the only file you normally edit
 verificar.js            the verification gate
 scripts/sync.js         reads the form, regenerates the roster
+scripts/google.js       reads a PRIVATE Google Sheet via a service account
 scripts/paises.js       country/city -> ISO code + region
 scripts/fixtures/       CSV copies of the form, so the sync is testable
 data/overrides.json     manual corrections that survive every sync
