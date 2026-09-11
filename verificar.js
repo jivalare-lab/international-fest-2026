@@ -177,6 +177,11 @@ console.log('\n\x1b[1m10. Indexacion\x1b[0m');
 test(/name=["']robots["'][^>]*noindex/i.test(html),
   'index.html lleva <meta robots noindex>',
   'FALTA el <meta robots noindex>: los datos personales entrarian en Google');
+// Isaac declaro el 2026-09-11 que el uso es interno. El aviso es la unica
+// senal que recibe quien abre el link. Si desaparece, no queda ninguna.
+test(/class="internal"/.test(html) && /Internal ISA roster/.test(html),
+  'la pagina muestra el aviso de uso interno',
+  'FALTA el aviso de uso interno: quien reciba el link no sabria que no debe reenviarlo');
 test(fs.existsSync(path.join(root, 'robots.txt')) &&
      /Disallow:\s*\/\s*$/m.test(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8')),
   'robots.txt bloquea a los rastreadores',
