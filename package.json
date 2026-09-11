@@ -1,0 +1,14 @@
+{
+  "name": "international-fest-2026",
+  "version": "1.0.0",
+  "description": "Loyola's International Fest 2026 \u2014 registered tables",
+  "scripts": {
+    "verificar": "node verificar.js && node verificar-render.js",
+    "test": "npm run verificar"
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "jsdom": "^30.0.1"
+  },
+  "private": true
+}

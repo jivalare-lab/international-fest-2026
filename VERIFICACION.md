@@ -32,7 +32,7 @@ completo antes de integrar.
 ## Verificar con
 
 ```
-node verificar.js
+node verificar.js && node verificar-render.js
 ```
 
 ## Qué prueba la puerta

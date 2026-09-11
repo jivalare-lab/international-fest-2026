@@ -138,8 +138,20 @@ for (const t of TABLES.filter(x => x.neighbour)) {
 }
 if (vecErr === 0) ok('las peticiones de mesas contiguas apuntan a mesas que existen');
 
-/* ---------- 9. Aviso de datos personales ---------- */
-console.log('\n\x1b[1m9. Datos personales publicados\x1b[0m');
+/* ---------- 9. La pagina no se indexa ---------- */
+console.log('\n\x1b[1m9. Indexacion\x1b[0m');
+// Se comparte por link, no se publica al buscador. Si esta linea desaparece,
+// 26 telefonos entran en Google sin que nadie se entere.
+test(/name=["']robots["'][^>]*noindex/i.test(html),
+  'index.html lleva <meta robots noindex>',
+  'FALTA el <meta robots noindex>: los datos personales entrarian en Google');
+test(fs.existsSync(path.join(root, 'robots.txt')) &&
+     /Disallow:\s*\/\s*$/m.test(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8')),
+  'robots.txt bloquea a los rastreadores',
+  'robots.txt no existe o no bloquea');
+
+/* ---------- 10. Aviso de datos personales ---------- */
+console.log('\n\x1b[1m10. Datos personales publicados\x1b[0m');
 const conTel = TABLES.filter(t => t.phone).length;
 const correos= TABLES.flatMap(t => t.emails).length;
 avisa(`esta pagina publica ${correos} correos y ${conTel} telefonos de terceros en un sitio indexable por Google.`);
