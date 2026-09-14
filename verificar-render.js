@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Prueba de render: carga index.html en un DOM real y comprueba que la pagina
-   dibuja las 28 tarjetas. La puerta estatica valida los datos; esta valida el
+   dibuja todas las tarjetas. La puerta estatica valida los datos; esta valida el
    resultado en pantalla, que es lo que ve quien abre el link. */
 'use strict';
 const fs = require('fs');
@@ -119,7 +119,7 @@ test(d.getElementById('empty').classList.contains('on'),
 
 search.value = ''; fire(search, 'input');
 test(q('#regions .card').length === TABLES.length,
-  'limpiar la busqueda devuelve las 28 tarjetas',
+  `limpiar la busqueda devuelve las ${TABLES.length} tarjetas`,
   'limpiar la busqueda no restaura todo');
 
 const chipAsia = [...q('#chips .chip')].find(c => c.dataset.r === 'asia');

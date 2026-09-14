@@ -27,6 +27,8 @@ const TABLES = [
 
   { id:"puerto-rico", type:"country", name:"Puerto Rico", iso:"pr", emoji:"🇵🇷", continent:"north-america", hosts:["Gabriel Calero","Kai"], emails:["Gecalero@my.loyno.edu"], phone:"(787) 508-8621", phoneHref:"+17875088621", activities:"Music, maybe flags", food:"TBD", heating:true, signedUp:"2026-09-02", notes:"" },
 
+  { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris"], emails:["bmharris@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food", food:"Cuñapes, candy", heating:false, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present." },
+
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
 
   { id:"ecuador", type:"country", name:"Ecuador", iso:"ec", emoji:"🇪🇨", continent:"south-america", hosts:["Sofia Costa","Valentina Mosquera"], emails:["smcosta@my.loyno.edu"], phone:"(504) 892-3132", phoneHref:"+15048923132", activities:"flags, music", food:"Tigrillo", heating:true, signedUp:"2026-09-10", notes:"Submitting on behalf of someone else who will be present." },
@@ -40,6 +42,8 @@ const TABLES = [
   { id:"france", type:"country", name:"France", iso:"fr", emoji:"🇫🇷", continent:"europe", hosts:["Camille Baldach-Lefebvre","Augustin Patte","Alexandre Perfettini","Yann Sittler","Samuel Marin"], emails:["smarin@my.loyno.edu"], phone:"+33781868184", phoneHref:"+33781868184", activities:"Don't know yet", food:"Don't know yet", heating:true, signedUp:"2026-09-02", notes:"" },
 
   { id:"germany", type:"country", name:"Germany", iso:"de", emoji:"🇩🇪", continent:"europe", hosts:["Brian Wilkins","Sonja Höning","Benita Veyhelmann","a few more pending"], emails:["Bdwilkin@my.loyno.edu"], phone:"(201) 724-2276", phoneHref:"+12017242276", activities:"Not sure yet", food:"Lots of German food of all types", heating:true, signedUp:"2026-09-02", notes:"Signed up as “Deutschland (Germany)”." },
+
+  { id:"hungary", type:"country", name:"Hungary", iso:"hu", emoji:"🇭🇺", continent:"europe", hosts:["Anna Nagy","Alexander Radics"], emails:["aznagy@my.loyno.edu"], phone:"(504) 300-7795", phoneHref:"+15043007795", activities:"We are planning to play music and we would like a flag", food:"We are planning to bake dessert", heating:false, signedUp:"2026-09-12", notes:"" },
 
   { id:"italy", type:"country", name:"Italy", iso:"it", emoji:"🇮🇹", continent:"europe", hosts:["Alessandro Conta","Enrico","Francesca","Giacomo","Pietro"], emails:["alessandroconta50@gmail.com"], phone:"+393341147095", phoneHref:"+393341147095", activities:"", food:"", heating:null, signedUp:"2026-09-01", notes:"" },
 

@@ -201,6 +201,11 @@ function fecha(v) {
   if (!Number.isNaN(n) && n > 20000 && n < 80000) {
     return new Date(Date.UTC(1899, 11, 30) + n * 86400000).toISOString().slice(0, 10);
   }
+  /* El CSV de Google trae "9/11/2026 21:14:55" en hora de Nueva Orleans. Pasarlo
+     por new Date() y toISOString() lo convierte a UTC y corre un dia a quien se
+     inscribio de noche. Se lee la fecha tal como esta escrita. */
+  const mdy = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
+  if (mdy) return `${mdy[3]}-${mdy[1].padStart(2, '0')}-${mdy[2].padStart(2, '0')}`;
   const d = new Date(s);
   return Number.isNaN(d.getTime()) ? '' : d.toISOString().slice(0, 10);
 }
@@ -421,10 +426,13 @@ function serializa(mesas) {
 function actualizaPie(html, mesas) {
   const paises = mesas.filter(m => m.type === 'country').length;
   const prog   = mesas.filter(m => m.type === 'program').length;
-  return html.replace(
-    /\d+\s+tables from\s+\d+\s+countries and\s+\d+\s+study abroad programs/,
-    `${mesas.length} tables from ${paises} countries and ${prog} study abroad programs`
-  );
+  return html
+    .replace(
+      /\d+\s+tables from\s+\d+\s+countries and\s+\d+\s+study abroad programs/,
+      `${mesas.length} tables from ${paises} countries and ${prog} study abroad programs`)
+    .replace(
+      /(og:description" content=")\d+ countries, \d+ study abroad programs/,
+      `$1${paises} countries, ${prog} study abroad programs`);
 }
 
 /* ---------------- principal ---------------- */

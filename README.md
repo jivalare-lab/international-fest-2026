@@ -7,7 +7,7 @@ table at Loyola's International Fest, grouped by region and colour-coded.
 
 ## What it does
 
-- **28 tables** — 26 countries and 2 Loyola study abroad programs
+- **30 tables** — 28 countries and 2 Loyola study abroad programs
 - **6 regions**, each with its own colour taken from the official festival flyer
 - Live search across country, host, dish and activity
 - Filter chips per region with live counts
@@ -32,7 +32,7 @@ node verificar.js
 ```
 
 Read `VERIFICACION.md` before changing anything. This repo publishes personal
-contact details of 71 people; the level contract explains what that means.
+contact details of 74 people; the level contract explains what that means.
 
 ## Keeping it in sync with the form
 
