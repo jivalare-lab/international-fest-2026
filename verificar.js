@@ -91,7 +91,7 @@ console.log('\n\x1b[1m5. Enlaces locales\x1b[0m');
 const locales = [...html.matchAll(/(?:src|href)="(?!https?:|mailto:|tel:|data:|#)([^"]+)"/g)].map(m => m[1]);
 let rotos = 0;
 for (const l of locales) {
-  if (!fs.existsSync(path.join(root, l))) { mal(`enlace roto en index.html: ${l}`); rotos++; }
+  if (!fs.existsSync(path.join(root, l.split('?')[0]))) { mal(`enlace roto en index.html: ${l}`); rotos++; }
 }
 if (rotos === 0) ok(`los ${locales.length} enlaces locales del HTML resuelven`);
 

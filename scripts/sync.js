@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const { busca, isoAEmoji } = require('./paises.js');
 const { leeHoja } = require('./google.js');
 
@@ -432,7 +433,13 @@ function actualizaPie(html, mesas) {
       `${mesas.length} tables from ${paises} countries and ${prog} study abroad programs`)
     .replace(
       /(og:description" content=")\d+ countries, \d+ study abroad programs/,
-      `$1${paises} countries, ${prog} study abroad programs`);
+      `$1${paises} countries, ${prog} study abroad programs`)
+    /* GitHub Pages deja data/tables.js 10 minutos en cache y el navegador
+       seguia mostrando el roster viejo. La version es una huella del
+       contenido: cambia solo si cambian las mesas. */
+    .replace(
+      /data\/tables\.js(?:\?v=[0-9a-f]+)?"/,
+      `data/tables.js?v=${crypto.createHash('sha1').update(serializa(mesas)).digest('hex').slice(0, 8)}"`);
 }
 
 /* ---------------- principal ---------------- */
