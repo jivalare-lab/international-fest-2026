@@ -16,6 +16,7 @@
   var elCount   = document.getElementById('resultcount');
   var elToast   = document.getElementById('toast');
   var elTbody   = document.getElementById('tbody');
+  var elTribute = document.getElementById('tribute');
 
   /* ---------- utilidades ---------- */
   function esc(s) {
@@ -53,6 +54,21 @@
     else if (state.region !== 'all' && t.continent !== state.region) return false;
     if (!state.q) return true;
     return haystack(t).indexOf(state.q) !== -1;
+  }
+
+  /* Easter egg de Josi: "Dolly Parton" escrito como sea (mayusculas, espacios,
+     tildes, guiones, una o dos eles). */
+  function esDolly(q) {
+    var s = q.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z]/g, '');
+    return /^dol+(y|i|ie|ey)part[oa]n$/.test(s);
+  }
+
+  function tribute(on) {
+    if (on) {
+      var img = document.getElementById('tribute-img');
+      if (!img.getAttribute('src')) img.setAttribute('src', img.dataset.src);
+    }
+    elTribute.hidden = !on;
   }
 
   /* ---------- iconos ---------- */
@@ -134,14 +150,17 @@
       '</section>';
     });
 
+    var dolly = esDolly(state.q);
+    tribute(dolly);
     elGrid.innerHTML = html;
-    elEmpty.classList.toggle('on', shown.length === 0);
+    elEmpty.classList.toggle('on', shown.length === 0 && !dolly);
 
     var regionName = state.region === 'all' ? 'all regions'
                    : state.region === 'programs' ? 'Loyola programs' : byId[state.region].name;
     elCount.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + TABLES.length + '</b> tables'
       + (state.region === 'all' ? '' : ' in <b>' + esc(regionName) + '</b>')
       + (state.q ? ' matching <b>“' + esc(state.q) + '”</b>' : '');
+    if (dolly) elCount.innerHTML = '';
 
     reveal();
   }

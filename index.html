@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v=67cf894f">
 </head>
 <body>
 
@@ -120,6 +120,23 @@
 <main>
   <div class="wrap">
     <p class="result-line" id="resultcount" role="status" aria-live="polite"></p>
+    <!-- Easter egg: solo aparece si alguien busca a Dolly Parton. -->
+    <section class="tribute" id="tribute" hidden aria-label="In memory of Dolly Parton">
+      <div class="tribute-photo">
+        <img id="tribute-img" data-src="assets/dolly-parton.jpg" alt="Dolly Parton in 1977" width="500" height="643">
+      </div>
+      <div class="tribute-text">
+        <p class="tribute-kicker">In loving memory</p>
+        <h2>Dolly Parton</h2>
+        <p class="tribute-dates">January 19, 1946 &ndash; August 25, 2026</p>
+        <div class="candle" aria-hidden="true">
+          <span class="glow"></span><span class="flame"></span><span class="wick"></span><span class="wax"></span>
+        </div>
+        <p class="tribute-rip">Rest in peace</p>
+        <p class="tribute-note">A little easter egg from Josi, for all the joy she brought us.</p>
+        <p class="tribute-credit">Photo: RCA Records, 1977. Public domain.</p>
+      </div>
+    </section>
     <div id="regions"></div>
     <div class="empty" id="empty">
       <div class="big">🔍</div>
@@ -169,6 +186,6 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="data/tables.js?v=bce56593"></script>
-<script src="assets/app.js?v=9c171af4"></script>
+<script src="assets/app.js?v=9388fe11"></script>
 </body>
 </html>

@@ -112,6 +112,26 @@ test(q('#regions .card').length === 2,
   'buscar "tracey" deja las 2 mesas de programas (busca dentro de los hosts)',
   `buscar "tracey" dejo ${q('#regions .card').length} tarjetas`);
 
+const tributo = d.getElementById('tribute');
+test(tributo && tributo.hidden && !d.getElementById('tribute-img').getAttribute('src'),
+  'el homenaje a Dolly Parton esta escondido y su foto no se descarga si nadie la busca',
+  'el homenaje a Dolly Parton se ve (o descarga la foto) sin que nadie la busque');
+
+const formas = ['Dolly Parton', 'DOLLY PARTON', 'dollyparton', 'dolly-parton', 'Doly Partón', ' dolly  parton '];
+const fallan = formas.filter(f => { search.value = f; fire(search, 'input'); return tributo.hidden; });
+test(fallan.length === 0,
+  `buscar Dolly Parton de ${formas.length} maneras distintas muestra el homenaje`,
+  `no aparece con: ${fallan.join(' | ')}`);
+test(!d.getElementById('empty').classList.contains('on'),
+  'con el homenaje visible no sale el mensaje de "No tables match"',
+  'el homenaje y el estado vacio salen a la vez');
+
+const parecidas = ['dolly', 'parton', 'molly parton', 'dolly partonx'];
+const cuelan = parecidas.filter(f => { search.value = f; fire(search, 'input'); return !tributo.hidden; });
+test(cuelan.length === 0,
+  'busquedas parecidas (dolly, parton, molly parton) no lo muestran',
+  `aparece sin buscarla: ${cuelan.join(' | ')}`);
+
 search.value = 'zzzzz'; fire(search, 'input');
 test(d.getElementById('empty').classList.contains('on'),
   'una busqueda sin resultados muestra el estado vacio',
