@@ -51,8 +51,8 @@ test(q('#regions .region').length === CONTINENTS.length,
   `dibuja las ${CONTINENTS.length} secciones de region`,
   `dibuja ${q('#regions .region').length} regiones y deberian ser ${CONTINENTS.length}`);
 
-test(q('#chips .chip').length === CONTINENTS.length + 1,
-  `dibuja ${CONTINENTS.length + 1} filtros (todas + una por region)`,
+test(q('#chips .chip').length === CONTINENTS.length + 2,
+  `dibuja ${CONTINENTS.length + 2} filtros (todas + una por region + Loyola programs)`,
   `dibuja ${q('#chips .chip').length} filtros`);
 
 test(q('#tbody tr').length === TABLES.length,
@@ -128,6 +128,14 @@ const asia = TABLES.filter(t => t.continent === 'asia').length;
 test(q('#regions .card').length === asia,
   `filtrar por Asia deja ${asia} tarjetas`,
   `filtrar por Asia dejo ${q('#regions .card').length} y deberian ser ${asia}`);
+
+const chipProg = [...q('#chips .chip')].find(c => c.dataset.r === 'programs');
+chipProg.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+const progs = TABLES.filter(t => t.type === 'program').map(t => t.id).sort();
+const vistas = [...q('#regions .card')].map(c => c.dataset.id).sort();
+test(JSON.stringify(vistas) === JSON.stringify(progs),
+  `filtrar por Loyola programs deja las ${progs.length} mesas de programas y nada mas`,
+  `filtrar por Loyola programs dejo ${vistas.join(', ')}`);
 
 test(errores.length === 0, 'ningun error de JS en la consola', `errores en consola: ${errores.join(' | ')}`);
 

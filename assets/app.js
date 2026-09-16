@@ -47,7 +47,10 @@
   }
 
   function matches(t) {
-    if (state.region !== 'all' && t.continent !== state.region) return false;
+    /* 'programs' no es una region: deja solo las mesas de programas de Loyola,
+       cada una dentro de su continente. */
+    if (state.region === 'programs') { if (t.type !== 'program') return false; }
+    else if (state.region !== 'all' && t.continent !== state.region) return false;
     if (!state.q) return true;
     return haystack(t).indexOf(state.q) !== -1;
   }
@@ -134,7 +137,8 @@
     elGrid.innerHTML = html;
     elEmpty.classList.toggle('on', shown.length === 0);
 
-    var regionName = state.region === 'all' ? 'all regions' : byId[state.region].name;
+    var regionName = state.region === 'all' ? 'all regions'
+                   : state.region === 'programs' ? 'Loyola programs' : byId[state.region].name;
     elCount.innerHTML = 'Showing <b>' + shown.length + '</b> of <b>' + TABLES.length + '</b> tables'
       + (state.region === 'all' ? '' : ' in <b>' + esc(regionName) + '</b>')
       + (state.q ? ' matching <b>“' + esc(state.q) + '”</b>' : '');
@@ -152,6 +156,11 @@
       html += '<button class="chip" aria-pressed="false" data-r="' + c.id + '" style="--chip:' + c.color + '">'
             + c.emoji + ' ' + esc(c.short) + ' <span class="n">' + n + '</span></button>';
     });
+    var nProg = TABLES.filter(function (t) { return t.type === 'program'; }).length;
+    if (nProg) {
+      html += '<button class="chip" aria-pressed="false" data-r="programs" style="--chip:var(--maroon)">'
+            + '🎓 Loyola programs <span class="n">' + nProg + '</span></button>';
+    }
     elChips.innerHTML = html;
   }
 
