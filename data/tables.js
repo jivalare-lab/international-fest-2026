@@ -15,9 +15,17 @@ const CONTINENTS = [
 const TABLES = [
   { id:"costa-rica", type:"country", name:"Costa Rica", iso:"cr", emoji:"🇨🇷", continent:"north-america", hosts:["Juliana Jimenez","Piper"], emails:["Jjimenez@my.loyno.edu"], phone:"(504) 409-8545", phoneHref:"+15044098545", activities:"Music and flag", food:"Arroz con pollo", heating:true, signedUp:"2026-08-28", notes:"" },
 
+  { id:"dominican-republic", type:"country", name:"Dominican Republic", iso:"do", emoji:"🇩🇴", continent:"north-america", hosts:["Nikol Fernandez"], emails:["nvfernan@my.loyno.edu"], phone:"(504) 326-4990", phoneHref:"+15043264990", activities:"Dominican flag and music", food:"Yaroa y pastelitos", heating:true, signedUp:"2026-09-15", notes:"" },
+
+  { id:"el-salvador", type:"country", name:"El Salvador", iso:"sv", emoji:"🇸🇻", continent:"north-america", hosts:["Lala Angelucci","Juan Pablo Rivas","Rodrigo Samour"], emails:["rsamour@my.loyno.edu"], phone:"(504) 547-5027", phoneHref:"+15045475027", activities:"Food and great info", food:"Pupusas", heating:true, signedUp:"2026-09-14", notes:"" },
+
   { id:"guatemala", type:"country", name:"Guatemala", iso:"gt", emoji:"🇬🇹", continent:"north-america", hosts:["Pili Chen"], emails:["mchenbu@my.loyno.edu"], phone:"(504) 206-7945", phoneHref:"+15042067945", activities:"", food:"Paletas", heating:false, signedUp:"2026-09-02", notes:"" },
 
+  { id:"haiti", type:"country", name:"Haiti", iso:"ht", emoji:"🇭🇹", continent:"north-america", hosts:["Zoe Desrouleaux"], emails:["zsdesrou@my.loyno.edu"], phone:"(954) 261-6599", phoneHref:"+19542616599", activities:"Flags, music, Haitian food", food:"Griot, rice, pâté, plantains, soda", heating:true, signedUp:"2026-09-15", notes:"" },
+
   { id:"honduras", type:"country", name:"Honduras", iso:"hn", emoji:"🇭🇳", continent:"north-america", hosts:["Emely Velasquez","Lauren Irias"], emails:["lsirias@my.loyno.edu"], phone:"(786) 813-7285", phoneHref:"+17868137285", activities:"Flag, music", food:"Baleadas and maybe zambos preparados", heating:true, signedUp:"2026-08-25", notes:"" },
+
+  { id:"jamaica", type:"country", name:"Jamaica", iso:"jm", emoji:"🇯🇲", continent:"north-america", hosts:["Evon Gocan","Thandie Sampson","Ryan Ramson"], emails:["elgocan@my.loyno.edu","Tnsampso@my.loyno.edu"], phone:"(216) 470-3820", phoneHref:"+12164703820", activities:"Not completely sure yet but definitely music and food for now", food:"Jerk Chicken, Beef Patties", heating:true, signedUp:"2026-09-15", notes:"2 separate sign-ups merged into one table. Evon may bring more people." },
 
   { id:"mexico", type:"country", name:"México", iso:"mx", emoji:"🇲🇽", continent:"north-america", hosts:["Matías jurado","Emilio Rodríguez"], emails:["earodri1@my.loyno.edu"], phone:"(832) 389-4626", phoneHref:"+18323894626", activities:"Flag, music, food", food:"Tbd: tacos", heating:true, signedUp:"2026-09-04", notes:"" },
 
@@ -39,6 +47,8 @@ const TABLES = [
 
   { id:"austria", type:"country", name:"Austria", iso:"at", emoji:"🇦🇹", continent:"europe", hosts:["Jakob Brigola","Alex","Victoria"], emails:["jbbrigol@my.loyno.edu"], phone:"+1 (213) 589-8111", phoneHref:"+12135898111", activities:"Austria flag and an alcohol-free Austrian beer stein holding contest", food:"Schnitzel, Kaiserschmarrn and Apfelstrudel", heating:true, signedUp:"2026-09-08", notes:"" },
 
+  { id:"denmark", type:"country", name:"Denmark", iso:"dk", emoji:"🇩🇰", continent:"europe", hosts:["Martin Ashworth"], emails:["mnashwor@my.loyno.edu"], phone:"+4529281188", phoneHref:"+4529281188", activities:"Food", food:"Rugbrød, pastries", heating:false, signedUp:"2026-09-15", notes:"" },
+
   { id:"france", type:"country", name:"France", iso:"fr", emoji:"🇫🇷", continent:"europe", hosts:["Camille Baldach-Lefebvre","Augustin Patte","Alexandre Perfettini","Yann Sittler","Samuel Marin"], emails:["smarin@my.loyno.edu"], phone:"+33781868184", phoneHref:"+33781868184", activities:"Don't know yet", food:"Don't know yet", heating:true, signedUp:"2026-09-02", notes:"" },
 
   { id:"germany", type:"country", name:"Germany", iso:"de", emoji:"🇩🇪", continent:"europe", hosts:["Brian Wilkins","Sonja Höning","Benita Veyhelmann","a few more pending"], emails:["Bdwilkin@my.loyno.edu"], phone:"(201) 724-2276", phoneHref:"+12017242276", activities:"Not sure yet", food:"Lots of German food of all types", heating:true, signedUp:"2026-09-02", notes:"Signed up as “Deutschland (Germany)”." },
@@ -51,21 +61,29 @@ const TABLES = [
 
   { id:"romania", type:"country", name:"Romania", iso:"ro", emoji:"🇷🇴", continent:"europe", hosts:["Luciana Flavia Tanase Marziano"], emails:["lftanase@my.loyno.edu"], phone:"(504) 532-5348", phoneHref:"+15045325348", activities:"flag and music", food:"Mămăligă", heating:true, signedUp:"2026-09-04", notes:"" },
 
+  { id:"spain", type:"country", name:"Spain", iso:"es", emoji:"🇪🇸", continent:"europe", hosts:["Fátima Pérez","Nicolás Villegas Mato","Lucía Martínez","Miguel Ardid","Miguel Benjumea","Jose Catala","Gonzalo Jimenez"], emails:["fperezd@my.loyno.edu","nvillega@my.loyno.edu"], phone:"+34622099902", phoneHref:"+34622099902", activities:"Music, food and flags", food:"Tortilla de patatas", heating:false, signedUp:"2026-09-15", notes:"2 separate sign-ups merged into one table." },
+
   { id:"switzerland", type:"country", name:"Switzerland", iso:"ch", emoji:"🇨🇭", continent:"europe", hosts:["Lukas Buerkler"], emails:["lukas.buerkler@bluewin.ch"], phone:"+41787289050", phoneHref:"+41787289050", activities:"Flags, music", food:"tbd", heating:true, signedUp:"2026-09-09", notes:"" },
 
   { id:"turkiye", type:"country", name:"Türkiye", iso:"tr", emoji:"🇹🇷", continent:"europe", hosts:["Ece Tanriverdi"], emails:["etanrive@my.loyno.edu"], phone:"(412) 370-7416", phoneHref:"+14123707416", activities:"flags and foods and music", food:"I am working on it", heating:true, signedUp:"2026-09-09", notes:"Transcontinental, grouped under Europe for the fest." },
 
   { id:"iceland", type:"program", name:"Iceland", iso:"is", emoji:"🇮🇸", continent:"europe", hosts:["Tracey Watts"], emails:["tawatts@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"None", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"summer-in-prague-vienna-budapest", notes:"Loyola study abroad program." },
 
+  { id:"loyola-s-ireland-program", type:"program", name:"Loyola's Ireland Program", iso:"ie", emoji:"🇮🇪", continent:"europe", hosts:["Natasha Bingham","Kevin Rabalais","Emily Capdeville"], emails:["nbingham@loyno.edu","klrabal1@loyno.edu","ecapdevi@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Not available at the time", heating:false, signedUp:"2026-09-14", setup:"No special equipment needed", notes:"Loyola study abroad program. Would like to sit near Emily and Kevin's programs." },
+
   { id:"summer-in-prague-vienna-budapest", type:"program", name:"Summer in Prague / Vienna / Budapest", iso:"cz", emoji:"🇨🇿", continent:"europe", hosts:["Tracey Watts","Justin Nystrom","Kevin Rabalais"], emails:["tawatts@loyno.edu","jnystrom@loyno.edu","klrabal1@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Justin Nystrom will be bringing something with poppy seeds!", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"iceland", notes:"Loyola study abroad program." },
 
-  { id:"india", type:"country", name:"India", iso:"in", emoji:"🇮🇳", continent:"asia", hosts:["Presha Shanthamoorthi","Aaliyah achary","Aryan Patel","poojyatha","shivika","and maybe more I’ll check"], emails:["pshantha@my.loyno.edu"], phone:"(504) 444-6506", phoneHref:"+15044446506", activities:"", food:"", heating:null, signedUp:"2026-09-02", notes:"" },
+  { id:"india", type:"country", name:"India", iso:"in", emoji:"🇮🇳", continent:"asia", hosts:["Presha Shanthamoorthi","Aaliyah Achary","Aryan Patel","Poojyatha","Shivika"], emails:["pshantha@my.loyno.edu"], phone:"(504) 444-6506", phoneHref:"+15044446506", activities:"", food:"", heating:null, signedUp:"2026-09-02", notes:"Presha may bring more people." },
 
   { id:"nepal", type:"country", name:"Nepal", iso:"np", emoji:"🇳🇵", continent:"asia", hosts:["Shivika Sharma","Priyanka Ghimire"], emails:["ssharma@my.loyno.edu"], phone:"(504) 505-3896", phoneHref:"+15045053896", activities:"Food", food:"Not yet decided", heating:false, signedUp:"2026-09-11", notes:"Phone came in as “+(504) 5053896”; read as a New Orleans number. Worth confirming." },
 
-  { id:"south-korea", type:"country", name:"South Korea", iso:"kr", emoji:"🇰🇷", continent:"asia", hosts:["Gaeun Kim","Chaehyun Yoon","Luda Lee","Younseo Song","Chaeyun Hwang","Eunjoo Lee","Shiloh Grace"], emails:["elee1@my.loyno.edu","Sggerlac@gmail.com"], phone:"(504) 408-4742", phoneHref:"+15044084742", activities:"games", food:"", heating:false, signedUp:"2026-09-05", notes:"2 separate sign-ups merged into one table." },
+  { id:"south-korea", type:"country", name:"South Korea", iso:"kr", emoji:"🇰🇷", continent:"asia", hosts:["Gaeun Kim","Chaehyun Yoon","Luda Lee","Younseo Song","Chaeyun Hwang","Eunjoo Lee"], emails:["elee1@my.loyno.edu"], phone:"(504) 408-4742", phoneHref:"+15044084742", activities:"games", food:"", heating:false, signedUp:"2026-09-05", notes:"" },
 
   { id:"vietnam", type:"country", name:"Vietnam", iso:"vn", emoji:"🇻🇳", continent:"asia", hosts:["Jett Nguyen","Claire Luig"], emails:["jettnguyen0707@gmail.com"], phone:"(337) 706-4055", phoneHref:"+13377064055", activities:"Food", food:"Egg rolls and spring rolls", heating:false, signedUp:"2026-09-06", notes:"" },
+
+  { id:"india-j-term-2027", type:"program", name:"India J-Term 2027", iso:"in", emoji:"🇮🇳", continent:"asia", hosts:["Program representative"], emails:["jcoday@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Undecided", heating:false, signedUp:"2026-09-14", setup:"No special equipment needed", notes:"Loyola study abroad program. The form named the host only as “Me”; the name is still to confirm." },
+
+  { id:"south-korea-summer-program", type:"program", name:"South Korea Summer Program", iso:"kr", emoji:"🇰🇷", continent:"asia", hosts:["Shiloh Grace"], emails:["Sggerlac@gmail.com"], phone:"(504) 952-3706", phoneHref:"+15049523706", activities:"", food:"", heating:null, signedUp:"2026-09-10", notes:"Loyola summer program. Signed up on the student form; kept apart from the South Korea country table." },
 
   { id:"south-africa", type:"country", name:"South Africa", iso:"za", emoji:"🇿🇦", continent:"africa", hosts:["Que Fortune"], emails:["cqfortun@my.loyno.edu"], phone:"(515) 302-0553", phoneHref:"+15153020553", activities:"Flags, history, music knowledge", food:"Undecided: maybe milk tart or pickled fish", heating:false, signedUp:"2026-08-31", notes:"" },
 

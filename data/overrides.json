@@ -3,14 +3,22 @@
     "Correcciones a mano que sobreviven a cada sincronizacion con el formulario.",
     "scripts/sync.js las aplica al final, asi que nada del formulario las pisa.",
     "'nombres' arregla como se escribio el pais en el form -> como se muestra.",
-    "'byId' arregla campos de una mesa concreta. 'notesAppend' agrega sin borrar."
+    "'byId' arregla campos de una mesa concreta. 'notesAppend' agrega sin borrar.",
+    "'separar' saca una inscripcion de estudiantes de la mesa de su pais y la vuelve",
+    "su propia tarjeta de programa. La clave es el 'Email Address' del formulario."
   ],
+
+  "separar": {
+    "sggerlac@my.loyno.edu": { "name": "South Korea Summer Program" }
+  },
 
   "nombres": {
     "Deutschland (Germany)": "Germany",
     "Costa rica": "Costa Rica",
     "Puerto rico": "Puerto Rico",
-    "Summer in Prague/Vienna/Budapest": "Summer in Prague / Vienna / Budapest"
+    "Summer in Prague/Vienna/Budapest": "Summer in Prague / Vienna / Budapest",
+    "EL SALVADOR 💪🔥🔥🔥": "El Salvador",
+    "Republica Dominicana": "Dominican Republic"
   },
 
   "byId": {
@@ -47,6 +55,34 @@
     "summer-in-prague-vienna-budapest": {
       "iso": "cz",
       "notesAppend": "Loyola study abroad program."
+    },
+    "south-korea-summer-program": {
+      "notesAppend": "Loyola summer program. Signed up on the student form; kept apart from the South Korea country table."
+    },
+    "jamaica": {
+      "hosts": ["Evon Gocan", "Thandie Sampson", "Ryan Ramson"],
+      "notesAppend": "Evon may bring more people."
+    },
+    "spain": {
+      "hosts": ["Fátima Pérez", "Nicolás Villegas Mato", "Lucía Martínez", "Miguel Ardid", "Miguel Benjumea", "Jose Catala", "Gonzalo Jimenez"]
+    },
+    "haiti": {
+      "activities": "Flags, music, Haitian food",
+      "food": "Griot, rice, pâté, plantains, soda"
+    },
+    "denmark": {
+      "food": "Rugbrød, pastries"
+    },
+    "india": {
+      "hosts": ["Presha Shanthamoorthi", "Aaliyah Achary", "Aryan Patel", "Poojyatha", "Shivika"],
+      "notesAppend": "Presha may bring more people."
+    },
+    "india-j-term-2027": {
+      "hosts": ["Program representative"],
+      "notesAppend": "Loyola study abroad program. The form named the host only as “Me”; the name is still to confirm."
+    },
+    "loyola-s-ireland-program": {
+      "notesAppend": "Loyola study abroad program. Would like to sit near Emily and Kevin's programs."
     },
     "iceland": {
       "notesAppend": "Loyola study abroad program."

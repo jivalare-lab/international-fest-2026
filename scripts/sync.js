@@ -220,7 +220,10 @@ function ubica(textoPais, contexto) {
   return r;
 }
 
-function leeEstudiantes(filas) {
+/* 'separar' en overrides.json: una inscripcion que NO debe fusionarse con la
+   del mismo pais (un summer program no es la mesa del pais). Se identifica
+   por el correo con que se lleno el formulario, que no cambia. */
+function leeEstudiantes(filas, separar = {}) {
   const h = filas[0];
   const c = {
     correo:    col(h, 'email address'),
@@ -251,10 +254,11 @@ function leeEstudiantes(filas) {
 
     const compromiso = limpia(f[c.compromiso]);
     const nota = compromiso && !/^yes$/i.test(compromiso) ? compromiso : '';
+    const aparte = separar[limpia(f[c.correo]).toLowerCase()];
 
     return {
-      type: 'country',
-      nombreBruto: paisTexto,
+      type: aparte ? 'program' : 'country',
+      nombreBruto: aparte ? aparte.name : paisTexto,
       iso: geo.iso, continent: geo.region, emoji: geo.emoji,
       hosts, emails: correos,
       ...telefono(f[c.tel]),
@@ -458,7 +462,8 @@ function actualizaPie(html, mesas) {
     leeFuente(FUENTE_PROG, 'programas')
   ]);
 
-  const est  = leeEstudiantes(filasEst);
+  const ovr = fs.existsSync(ARCHIVO_OVR) ? JSON.parse(fs.readFileSync(ARCHIVO_OVR, 'utf8')) : {};
+  const est  = leeEstudiantes(filasEst, ovr.separar);
   const prog = filasProg ? leeProgramas(filasProg) : [];
   console.log(`  leidas ${est.length} inscripciones de estudiantes y ${prog.length} de programas`);
 
@@ -471,7 +476,6 @@ function actualizaPie(html, mesas) {
     process.exit(1);
   }
 
-  const ovr = fs.existsSync(ARCHIVO_OVR) ? JSON.parse(fs.readFileSync(ARCHIVO_OVR, 'utf8')) : {};
   const mesas = construye(fusiona([...est, ...prog]), ovr);
 
   const fusionadas = mesas.filter(m => /merged into one table/.test(m.notes || ''));
