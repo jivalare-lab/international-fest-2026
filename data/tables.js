@@ -39,6 +39,8 @@ const TABLES = [
 
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
 
+  { id:"colombia", type:"country", name:"Colombia", iso:"co", emoji:"🇨🇴", continent:"south-america", hosts:["Maria Guzman"], emails:["mariajose.guzpar08@gmail.com"], phone:"(803) 543-8604", phoneHref:"+18035438604", activities:"flag, food", food:"arepas", heating:true, signedUp:"2026-09-16", notes:"" },
+
   { id:"ecuador", type:"country", name:"Ecuador", iso:"ec", emoji:"🇪🇨", continent:"south-america", hosts:["Sofia Costa","Valentina Mosquera"], emails:["smcosta@my.loyno.edu"], phone:"(504) 892-3132", phoneHref:"+15048923132", activities:"flags, music", food:"Tigrillo", heating:true, signedUp:"2026-09-10", notes:"Submitting on behalf of someone else who will be present." },
 
   { id:"peru", type:"country", name:"Peru", iso:"pe", emoji:"🇵🇪", continent:"south-america", hosts:["Gabriella Berges Lazo"], emails:["gberges@my.loyno.edu"], phone:"(516) 329-0702", phoneHref:"+15163290702", activities:"Games, Food, Music, Drinks", food:"Arroz chaufa and chicha morada (juice)", heating:true, signedUp:"2026-08-27", notes:"" },
