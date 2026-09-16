@@ -18,7 +18,8 @@
     "Puerto rico": "Puerto Rico",
     "Summer in Prague/Vienna/Budapest": "Summer in Prague / Vienna / Budapest",
     "EL SALVADOR 💪🔥🔥🔥": "El Salvador",
-    "Republica Dominicana": "Dominican Republic"
+    "Republica Dominicana": "Dominican Republic",
+    "Spain - Dual Degree Program": "Spain Dual Degree Program"
   },
 
   "byId": {
@@ -83,6 +84,9 @@
     },
     "loyola-s-ireland-program": {
       "notesAppend": "Loyola study abroad program. Would like to sit near Emily and Kevin's programs."
+    },
+    "spain-dual-degree-program": {
+      "notesAppend": "Loyola dual degree program."
     },
     "iceland": {
       "notesAppend": "Loyola study abroad program."
