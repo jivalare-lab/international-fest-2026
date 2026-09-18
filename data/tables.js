@@ -37,6 +37,8 @@ const TABLES = [
 
   { id:"oaxaca-mexico-summer-program", type:"program", name:"Oaxaca, Mexico Summer Program", iso:"mx", emoji:"🇲🇽", continent:"north-america", hosts:["Diana Soto-Olson"], emails:["dsotools@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Pastel de tres leches or icicles", heating:false, signedUp:"2026-09-17", setup:"No special equipment needed", notes:"Loyola summer program in Oaxaca. Asked for a spot out of the sun, so her snack doesn't suffer." },
 
+  { id:"argentina", type:"country", name:"Argentina", iso:"ar", emoji:"🇦🇷", continent:"south-america", hosts:["Isaac Valarezo"], emails:["jivalare@my.loyno.edu"], phone:"(504) 478-8141", phoneHref:"+15044788141", activities:"", food:"Empanadas", heating:null, signedUp:"2026-09-19", notes:"Also the coolest table with the coolest host. Yes, same guy. 😎" },
+
   { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris"], emails:["bmharris@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food", food:"Cuñapes, candy", heating:false, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present." },
 
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
@@ -82,6 +84,8 @@ const TABLES = [
   { id:"summer-in-prague-vienna-budapest", type:"program", name:"Summer in Prague / Vienna / Budapest", iso:"cz", emoji:"🇨🇿", continent:"europe", hosts:["Tracey Watts","Justin Nystrom","Kevin Rabalais"], emails:["tawatts@loyno.edu","jnystrom@loyno.edu","klrabal1@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Justin Nystrom will be bringing something with poppy seeds!", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"iceland", notes:"Loyola study abroad program." },
 
   { id:"india", type:"country", name:"India", iso:"in", emoji:"🇮🇳", continent:"asia", hosts:["Presha Shanthamoorthi","Aaliyah Achary","Aryan Patel","Poojyatha","Shivika"], emails:["pshantha@my.loyno.edu"], phone:"(504) 444-6506", phoneHref:"+15044446506", activities:"", food:"", heating:null, signedUp:"2026-09-02", notes:"Presha may bring more people." },
+
+  { id:"japan", type:"country", name:"Japan", iso:"jp", emoji:"🇯🇵", continent:"asia", hosts:["Isaac Valarezo"], emails:["jivalare@my.loyno.edu"], phone:"(504) 478-8141", phoneHref:"+15044788141", activities:"", food:"Sushi & Pokis", heating:null, signedUp:"2026-09-18", notes:"The coolest table with the coolest host. 😎" },
 
   { id:"nepal", type:"country", name:"Nepal", iso:"np", emoji:"🇳🇵", continent:"asia", hosts:["Shivika Sharma","Priyanka Ghimire"], emails:["ssharma@my.loyno.edu"], phone:"(504) 505-3896", phoneHref:"+15045053896", activities:"Food", food:"Not yet decided", heating:false, signedUp:"2026-09-11", notes:"Phone came in as “+(504) 5053896”; read as a New Orleans number. Worth confirming." },
 
