@@ -19,7 +19,9 @@
     "Summer in Prague/Vienna/Budapest": "Summer in Prague / Vienna / Budapest",
     "EL SALVADOR 💪🔥🔥🔥": "El Salvador",
     "Republica Dominicana": "Dominican Republic",
-    "Spain - Dual Degree Program": "Spain Dual Degree Program"
+    "Spain - Dual Degree Program": "Spain Dual Degree Program",
+    "England": "United Kingdom",
+    "Diana Soto-Olson, Oaxaca program, in Oaxaca México": "Oaxaca, Mexico Summer Program"
   },
 
   "byId": {
@@ -90,6 +92,12 @@
     },
     "iceland": {
       "notesAppend": "Loyola study abroad program."
+    },
+    "united-kingdom": {
+      "notesAppend": "Signed up as “England”."
+    },
+    "oaxaca-mexico-summer-program": {
+      "notesAppend": "Loyola summer program in Oaxaca. Asked for a spot out of the sun, so her snack doesn't suffer."
     }
   }
 }

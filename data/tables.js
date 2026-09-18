@@ -35,6 +35,8 @@ const TABLES = [
 
   { id:"puerto-rico", type:"country", name:"Puerto Rico", iso:"pr", emoji:"🇵🇷", continent:"north-america", hosts:["Gabriel Calero","Kai"], emails:["Gecalero@my.loyno.edu"], phone:"(787) 508-8621", phoneHref:"+17875088621", activities:"Music, maybe flags", food:"TBD", heating:true, signedUp:"2026-09-02", notes:"" },
 
+  { id:"oaxaca-mexico-summer-program", type:"program", name:"Oaxaca, Mexico Summer Program", iso:"mx", emoji:"🇲🇽", continent:"north-america", hosts:["Diana Soto-Olson"], emails:["dsotools@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Pastel de tres leches or icicles", heating:false, signedUp:"2026-09-17", setup:"No special equipment needed", notes:"Loyola summer program in Oaxaca. Asked for a spot out of the sun, so her snack doesn't suffer." },
+
   { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris"], emails:["bmharris@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food", food:"Cuñapes, candy", heating:false, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present." },
 
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
@@ -68,6 +70,8 @@ const TABLES = [
   { id:"switzerland", type:"country", name:"Switzerland", iso:"ch", emoji:"🇨🇭", continent:"europe", hosts:["Lukas Buerkler"], emails:["lukas.buerkler@bluewin.ch"], phone:"+41787289050", phoneHref:"+41787289050", activities:"Flags, music", food:"tbd", heating:true, signedUp:"2026-09-09", notes:"" },
 
   { id:"turkiye", type:"country", name:"Türkiye", iso:"tr", emoji:"🇹🇷", continent:"europe", hosts:["Ece Tanriverdi"], emails:["etanrive@my.loyno.edu"], phone:"(412) 370-7416", phoneHref:"+14123707416", activities:"flags and foods and music", food:"I am working on it", heating:true, signedUp:"2026-09-09", notes:"Transcontinental, grouped under Europe for the fest." },
+
+  { id:"united-kingdom", type:"country", name:"United Kingdom", iso:"gb", emoji:"🇬🇧", continent:"europe", hosts:["Fin Jones"], emails:["ffjones@my.loyno.edu"], phone:"(910) 818-3211", phoneHref:"+19108183211", activities:"English flag (St George's cross), music from England", food:"Tea and biscuits", heating:false, signedUp:"2026-09-17", notes:"Signed up as “England”." },
 
   { id:"iceland", type:"program", name:"Iceland", iso:"is", emoji:"🇮🇸", continent:"europe", hosts:["Tracey Watts"], emails:["tawatts@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"None", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"summer-in-prague-vienna-budapest", notes:"Loyola study abroad program." },
 
