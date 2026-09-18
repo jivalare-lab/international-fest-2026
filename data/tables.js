@@ -37,8 +37,6 @@ const TABLES = [
 
   { id:"oaxaca-mexico-summer-program", type:"program", name:"Oaxaca, Mexico Summer Program", iso:"mx", emoji:"🇲🇽", continent:"north-america", hosts:["Diana Soto-Olson"], emails:["dsotools@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Pastel de tres leches or icicles", heating:false, signedUp:"2026-09-17", setup:"No special equipment needed", notes:"Loyola summer program in Oaxaca. Asked for a spot out of the sun, so her snack doesn't suffer." },
 
-  { id:"argentina", type:"country", name:"Argentina", iso:"ar", emoji:"🇦🇷", continent:"south-america", hosts:["Isaac Valarezo"], emails:["jivalare@my.loyno.edu"], phone:"(504) 478-8141", phoneHref:"+15044788141", activities:"", food:"Empanadas", heating:null, signedUp:"2026-09-19", notes:"Also the coolest table with the coolest host. Yes, same guy. 😎" },
-
   { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris"], emails:["bmharris@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food", food:"Cuñapes, candy", heating:false, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present." },
 
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
@@ -67,8 +65,6 @@ const TABLES = [
 
   { id:"romania", type:"country", name:"Romania", iso:"ro", emoji:"🇷🇴", continent:"europe", hosts:["Luciana Flavia Tanase Marziano"], emails:["lftanase@my.loyno.edu"], phone:"(504) 532-5348", phoneHref:"+15045325348", activities:"flag and music", food:"Mămăligă", heating:true, signedUp:"2026-09-04", notes:"" },
 
-  { id:"spain", type:"country", name:"Spain", iso:"es", emoji:"🇪🇸", continent:"europe", hosts:["Fátima Pérez","Nicolás Villegas Mato","Lucía Martínez","Miguel Ardid","Miguel Benjumea","Jose Catala","Gonzalo Jimenez"], emails:["fperezd@my.loyno.edu","nvillega@my.loyno.edu"], phone:"+34622099902", phoneHref:"+34622099902", activities:"Music, food and flags", food:"Tortilla de patatas", heating:false, signedUp:"2026-09-15", notes:"2 separate sign-ups merged into one table." },
-
   { id:"switzerland", type:"country", name:"Switzerland", iso:"ch", emoji:"🇨🇭", continent:"europe", hosts:["Lukas Buerkler"], emails:["lukas.buerkler@bluewin.ch"], phone:"+41787289050", phoneHref:"+41787289050", activities:"Flags, music", food:"tbd", heating:true, signedUp:"2026-09-09", notes:"" },
 
   { id:"turkiye", type:"country", name:"Türkiye", iso:"tr", emoji:"🇹🇷", continent:"europe", hosts:["Ece Tanriverdi"], emails:["etanrive@my.loyno.edu"], phone:"(412) 370-7416", phoneHref:"+14123707416", activities:"flags and foods and music", food:"I am working on it", heating:true, signedUp:"2026-09-09", notes:"Transcontinental, grouped under Europe for the fest." },
@@ -79,7 +75,7 @@ const TABLES = [
 
   { id:"loyola-s-ireland-program", type:"program", name:"Loyola's Ireland Program", iso:"ie", emoji:"🇮🇪", continent:"europe", hosts:["Natasha Bingham","Kevin Rabalais","Emily Capdeville"], emails:["nbingham@loyno.edu","klrabal1@loyno.edu","ecapdevi@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Not available at the time", heating:false, signedUp:"2026-09-14", setup:"No special equipment needed", notes:"Loyola study abroad program. Would like to sit near Emily and Kevin's programs." },
 
-  { id:"spain-dual-degree-program", type:"program", name:"Spain Dual Degree Program", iso:"es", emoji:"🇪🇸", continent:"europe", hosts:["Fiorella Fillippini"], emails:["fnfillip@my.loyno.edu"], phone:"", phoneHref:"", activities:"", food:"", heating:null, signedUp:"", neighbour:"spain", notes:"Loyola dual degree program." },
+  { id:"spain-dual-degree-program", type:"program", name:"Spain Dual Degree Program", iso:"es", emoji:"🇪🇸", continent:"europe", hosts:["Fiorella Fillippini","Fátima Pérez","Nicolás Villegas Mato","Lucía Martínez","Miguel Ardid","Miguel Benjumea","Jose Catala","Gonzalo Jimenez"], emails:["fnfillip@my.loyno.edu","fperezd@my.loyno.edu","nvillega@my.loyno.edu"], phone:"+34622099902", phoneHref:"+34622099902", activities:"Music, food and flags", food:"Tortilla de patatas", heating:false, signedUp:"2026-09-15", notes:"Loyola dual degree program. One table for Spain and the dual degree program together." },
 
   { id:"summer-in-prague-vienna-budapest", type:"program", name:"Summer in Prague / Vienna / Budapest", iso:"cz", emoji:"🇨🇿", continent:"europe", hosts:["Tracey Watts","Justin Nystrom","Kevin Rabalais"], emails:["tawatts@loyno.edu","jnystrom@loyno.edu","klrabal1@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Justin Nystrom will be bringing something with poppy seeds!", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"iceland", notes:"Loyola study abroad program." },
 

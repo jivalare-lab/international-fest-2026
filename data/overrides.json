@@ -66,9 +66,6 @@
       "hosts": ["Evon Gocan", "Thandie Sampson", "Ryan Ramson"],
       "notesAppend": "Evon may bring more people."
     },
-    "spain": {
-      "hosts": ["Fátima Pérez", "Nicolás Villegas Mato", "Lucía Martínez", "Miguel Ardid", "Miguel Benjumea", "Jose Catala", "Gonzalo Jimenez"]
-    },
     "haiti": {
       "activities": "Flags, music, Haitian food",
       "food": "Griot, rice, pâté, plantains, soda"
@@ -88,7 +85,8 @@
       "notesAppend": "Loyola study abroad program. Would like to sit near Emily and Kevin's programs."
     },
     "spain-dual-degree-program": {
-      "notesAppend": "Loyola dual degree program."
+      "hosts": ["Fiorella Fillippini", "Fátima Pérez", "Nicolás Villegas Mato", "Lucía Martínez", "Miguel Ardid", "Miguel Benjumea", "Jose Catala", "Gonzalo Jimenez"],
+      "notesAppend": "Loyola dual degree program. One table for Spain and the dual degree program together."
     },
     "iceland": {
       "notesAppend": "Loyola study abroad program."
@@ -101,9 +99,6 @@
     },
     "japan": {
       "notesAppend": "The coolest table with the coolest host. 😎"
-    },
-    "argentina": {
-      "notesAppend": "Also the coolest table with the coolest host. Yes, same guy. 😎"
     }
   }
 }
