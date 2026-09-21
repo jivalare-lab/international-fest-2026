@@ -13,6 +13,8 @@ const CONTINENTS = [
 
 /* === INICIO TABLES: lo genera scripts/sync.js. No editar a mano. === */
 const TABLES = [
+  { id:"canada", type:"country", name:"Canada", iso:"ca", emoji:"🇨🇦", continent:"north-america", hosts:["Daton Richardson"], emails:["drrichar@my.loyno.edu"], phone:"(772) 789-6678", phoneHref:"+17727896678", activities:"", food:"Nanaimo bars or poutine", heating:true, signedUp:"2026-09-20", notes:"" },
+
   { id:"costa-rica", type:"country", name:"Costa Rica", iso:"cr", emoji:"🇨🇷", continent:"north-america", hosts:["Juliana Jimenez","Piper"], emails:["Jjimenez@my.loyno.edu"], phone:"(504) 409-8545", phoneHref:"+15044098545", activities:"Music and flag", food:"Arroz con pollo", heating:true, signedUp:"2026-08-28", notes:"" },
 
   { id:"dominican-republic", type:"country", name:"Dominican Republic", iso:"do", emoji:"🇩🇴", continent:"north-america", hosts:["Nikol Fernandez"], emails:["nvfernan@my.loyno.edu"], phone:"(504) 326-4990", phoneHref:"+15043264990", activities:"Dominican flag and music", food:"Yaroa y pastelitos", heating:true, signedUp:"2026-09-15", notes:"" },
@@ -56,6 +58,8 @@ const TABLES = [
   { id:"france", type:"country", name:"France", iso:"fr", emoji:"🇫🇷", continent:"europe", hosts:["Camille Baldach-Lefebvre","Augustin Patte","Alexandre Perfettini","Yann Sittler","Samuel Marin"], emails:["smarin@my.loyno.edu"], phone:"+33781868184", phoneHref:"+33781868184", activities:"Don't know yet", food:"Don't know yet", heating:true, signedUp:"2026-09-02", notes:"" },
 
   { id:"germany", type:"country", name:"Germany", iso:"de", emoji:"🇩🇪", continent:"europe", hosts:["Brian Wilkins","Sonja Höning","Benita Veyhelmann","a few more pending"], emails:["Bdwilkin@my.loyno.edu"], phone:"(201) 724-2276", phoneHref:"+12017242276", activities:"Not sure yet", food:"Lots of German food of all types", heating:true, signedUp:"2026-09-02", notes:"Signed up as “Deutschland (Germany)”." },
+
+  { id:"greece", type:"country", name:"Greece", iso:"gr", emoji:"🇬🇷", continent:"europe", hosts:["Apostolos Paziotopoulos"], emails:["apazioto@my.loyno.edu"], phone:"(620) 238-3217", phoneHref:"+16202383217", activities:"Food", food:"Greek salad", heating:false, signedUp:"2026-09-18", notes:"" },
 
   { id:"hungary", type:"country", name:"Hungary", iso:"hu", emoji:"🇭🇺", continent:"europe", hosts:["Anna Nagy","Alexander Radics"], emails:["aznagy@my.loyno.edu"], phone:"(504) 300-7795", phoneHref:"+15043007795", activities:"We are planning to play music and we would like a flag", food:"We are planning to bake dessert", heating:false, signedUp:"2026-09-12", notes:"" },
 
