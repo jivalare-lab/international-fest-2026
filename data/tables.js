@@ -39,7 +39,7 @@ const TABLES = [
 
   { id:"oaxaca-mexico-summer-program", type:"program", name:"Oaxaca, Mexico Summer Program", iso:"mx", emoji:"🇲🇽", continent:"north-america", hosts:["Diana Soto-Olson"], emails:["dsotools@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Pastel de tres leches or icicles", heating:false, signedUp:"2026-09-17", setup:"No special equipment needed", notes:"Loyola summer program in Oaxaca. Asked for a spot out of the sun, so her snack doesn't suffer." },
 
-  { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris"], emails:["bmharris@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food", food:"Cuñapes, candy", heating:false, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present." },
+  { id:"bolivia", type:"country", name:"Bolivia", iso:"bo", emoji:"🇧🇴", continent:"south-america", hosts:["Valentina Rojas","Bianca Harris","Allison Morales"], emails:["bmharris@my.loyno.edu","almoral1@my.loyno.edu"], phone:"(682) 702-5507", phoneHref:"+16827025507", activities:"Flags, food, music", food:"Cuñapes, candy; silpancho or peanut soup (not 100% sure yet)", heating:true, signedUp:"2026-09-11", notes:"Submitting on behalf of someone else who will be present. Allison Morales signed up separately on September 21st and joins this table; she asked for a heating dish." },
 
   { id:"brazil", type:"country", name:"Brazil", iso:"br", emoji:"🇧🇷", continent:"south-america", hosts:["Maria Eduarda Nastarino Leite","Cléo","Sabryne (maybe)","Tatiana (maybe)"], emails:["mnleite@my.loyno.edu"], phone:"+1 (504) 657-9496", phoneHref:"+15046579496", activities:"Food and flags", food:"", heating:true, signedUp:"2026-09-01", notes:"" },
 
@@ -67,6 +67,8 @@ const TABLES = [
 
   { id:"latvia", type:"country", name:"Latvia", iso:"lv", emoji:"🇱🇻", continent:"europe", hosts:["Markuss Sipko"], emails:["msipko@my.loyno.edu"], phone:"+1 (504) 210-9625", phoneHref:"+15042109625", activities:"No idea, andrea forced me to😂", food:"Not sure how to get my type of food here.", heating:false, signedUp:"2026-09-03", notes:"Solo host, a good table to pair with a neighbour." },
 
+  { id:"netherlands", type:"country", name:"Netherlands", iso:"nl", emoji:"🇳🇱", continent:"europe", hosts:["Leon Duterloo"], emails:["Lfduterl@my.loyno.edu"], phone:"+31623827949", phoneHref:"+31623827949", activities:"Not decided yet", food:"Dutch cookies", heating:false, signedUp:"2026-09-24", notes:"Signed up as “Netherland”." },
+
   { id:"romania", type:"country", name:"Romania", iso:"ro", emoji:"🇷🇴", continent:"europe", hosts:["Luciana Flavia Tanase Marziano"], emails:["lftanase@my.loyno.edu"], phone:"(504) 532-5348", phoneHref:"+15045325348", activities:"flag and music", food:"Mămăligă", heating:true, signedUp:"2026-09-04", notes:"" },
 
   { id:"switzerland", type:"country", name:"Switzerland", iso:"ch", emoji:"🇨🇭", continent:"europe", hosts:["Lukas Buerkler"], emails:["lukas.buerkler@bluewin.ch"], phone:"+41787289050", phoneHref:"+41787289050", activities:"Flags, music", food:"tbd", heating:true, signedUp:"2026-09-09", notes:"" },
@@ -75,7 +77,7 @@ const TABLES = [
 
   { id:"united-kingdom", type:"country", name:"United Kingdom", iso:"gb", emoji:"🇬🇧", continent:"europe", hosts:["Fin Jones"], emails:["ffjones@my.loyno.edu"], phone:"(910) 818-3211", phoneHref:"+19108183211", activities:"English flag (St George's cross), music from England", food:"Tea and biscuits", heating:false, signedUp:"2026-09-17", notes:"Signed up as “England”." },
 
-  { id:"iceland", type:"program", name:"Iceland", iso:"is", emoji:"🇮🇸", continent:"europe", hosts:["Tracey Watts"], emails:["tawatts@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"None", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"summer-in-prague-vienna-budapest", notes:"Loyola study abroad program." },
+  { id:"iceland", type:"program", name:"Iceland", iso:"is", emoji:"🇮🇸", continent:"europe", hosts:["Tracey Watts"], emails:["tawatts@loyno.edu","acvorse@my.loyno.edu"], phone:"(979) 402-1690", phoneHref:"+19794021690", activities:"Country flag and program tablecloth", food:"None", heating:false, signedUp:"2026-09-10", setup:"No special equipment needed", neighbour:"summer-in-prague-vienna-budapest", notes:"Loyola study abroad program. A second sign-up came in on September 24th from Andreas Vorse Ledé, on behalf of Tracey Watts, who will be present; the phone is Andreas’s." },
 
   { id:"loyola-s-ireland-program", type:"program", name:"Loyola's Ireland Program", iso:"ie", emoji:"🇮🇪", continent:"europe", hosts:["Natasha Bingham","Kevin Rabalais","Emily Capdeville"], emails:["nbingham@loyno.edu","klrabal1@loyno.edu","ecapdevi@loyno.edu"], phone:"", phoneHref:"", activities:"Country flag and program tablecloth", food:"Not available at the time", heating:false, signedUp:"2026-09-14", setup:"No special equipment needed", notes:"Loyola study abroad program. Would like to sit near Emily and Kevin's programs." },
 
