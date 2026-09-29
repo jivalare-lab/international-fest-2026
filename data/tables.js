@@ -13,8 +13,6 @@ const CONTINENTS = [
 
 /* === INICIO TABLES: lo genera scripts/sync.js. No editar a mano. === */
 const TABLES = [
-  { id:"canada", type:"country", name:"Canada", iso:"ca", emoji:"🇨🇦", continent:"north-america", hosts:["Daton Richardson"], emails:["drrichar@my.loyno.edu"], phone:"(772) 789-6678", phoneHref:"+17727896678", activities:"", food:"Nanaimo bars or poutine", heating:true, signedUp:"2026-09-20", notes:"" },
-
   { id:"costa-rica", type:"country", name:"Costa Rica", iso:"cr", emoji:"🇨🇷", continent:"north-america", hosts:["Juliana Jimenez","Piper"], emails:["Jjimenez@my.loyno.edu"], phone:"(504) 409-8545", phoneHref:"+15044098545", activities:"Music and flag", food:"Arroz con pollo", heating:true, signedUp:"2026-08-28", notes:"" },
 
   { id:"dominican-republic", type:"country", name:"Dominican Republic", iso:"do", emoji:"🇩🇴", continent:"north-america", hosts:["Nikol Fernandez"], emails:["nvfernan@my.loyno.edu"], phone:"(504) 326-4990", phoneHref:"+15043264990", activities:"Dominican flag and music", food:"Yaroa y pastelitos", heating:true, signedUp:"2026-09-15", notes:"" },
